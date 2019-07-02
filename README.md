@@ -1,3 +1,22 @@
+About this fork
+===============
+This fork is my attempt to bring the code tree back to life on the following hardware.
+- SUN Sparc 2
+- SUNOS 4.1.3_U1
+With the following installed build software
+- gcc-2.8.1
+- libstdc++-2.8.1
+- make-3.75
+- binutils-2.4
+- bash-1.14.7
+- autoconf-2.52
+- ncursres-5.6
+- libiconv-1.9.2 (tbb)
+- libintl-3.4.0 (tbb)
+- gnutls (tbb)
+-
+
+The following is from the original repro
 Helios-NG
 =========
 
