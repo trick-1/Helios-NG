@@ -1,0 +1,4 @@
+Environment Setup
+1. Make sure you all the dependencies built and installed.
+2. Modify makeinc/<yourmachine>.mk i.e makeinc/makesun4.mk to refelect the location of your build tree, install location and GCC location
+3. bash makeinc/makesun4.mk
