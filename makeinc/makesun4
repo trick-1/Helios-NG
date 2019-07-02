@@ -1,13 +1,18 @@
 # Make Helios/TRAN on the sparky
 
+# target processor
 export HPROC=TRAN
+# host processor
 export HHOST=SUN4
 
+# location of the source tree. Modify this to your location
 export HSRC=/giga/HeliosRoot/Helios
 # export HSRC=$hsrc
 
+# location of the built binary tree. Modify this to your location. Modify this to your location.
 export HPROD=/giga/HeliosRoot/Production/TRAN
 
+# Install location. Modify this to your location.
 export HHOSTBIN=/giga/bin
 
 export HLICENSEE=PERIHELION

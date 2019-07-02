@@ -23,6 +23,7 @@ ifndef HHOSTBIN
   HHOSTBIN	= /giga/bin#	# Where to place host utilities e.g. IO Server
 endif
 
+# You will need to modify the GCCINCLUDE location for your install
 ifndef GCCINCLUDE
 # GCCINCLUDE = /home/usr/lib/gcc-lib/sparc-sun-sunos4.1/2.4.5/include
 #  GCCINCLUDE = /opt/gnu/include

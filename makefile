@@ -134,15 +134,12 @@
 # your make script or environment, if not then get local defaults from
 # $(HSRC)/makeinc/DFLT.mak. Note that the following pathname cannot use $(HSRC).
 ifndef HPROC
-include makeinc/DFLT.mak
+ include makeinc/DFLT.mak
 endif
 
-ifndef HLICENSEE
- Stop the make!
- You have not defined who you are. I do not know what parts of Helios
- to build. Please check your make script (look in /hsrc/makeinc) or DFLT.mak
- file.
-endif
+#ifndef HLICENSEE
+# Stop the make! You have not defined who you are. I do not know what parts of Helios to build. Please check your make script (look in /hsrc/makeinc) or DFLT.mak file.
+#endif
 
 include $(HSRC)/makeinc/$(HHOST).mak	# Default host system variables
 
@@ -398,17 +395,19 @@ ifeq ($(HLICENSEE), PERIHELION)		# The lot!
  SRC_LIC = TRUE
  NCC_LIC = TRUE
  HFS_LIC = TRUE
- MSDOS_LIC = TRUE
+ #ejb MSDOS_LIC = TRUE
  DEBUG_LIC = TRUE
  TCPIP_LIC = TRUE
  IOS_LIC = TRUE
  X_LIC = TRUE
 
 # What hosts we support the Helios build on:
- HOSTSUPPORT := SUN4 R140 HELIOSTRAN
+# HOSTSUPPORT := SUN4 R140 HELIOSTRAN
+ HOSTSUPPORT := SUN4 HELIOSTRAN
 
 # What hosts we support the IOServer on other than the PC:
- HOSTIOSUPPORT := SUN4 R140 HELIOSTRAN
+# HOSTIOSUPPORT := SUN4 R140 HELIOSTRAN
+ HOSTIOSUPPORT := SUN4 HELIOSTRAN
 
 # ALL licensee specific code that we support:
  XTRASRC := 	$(NETWORK)/telmat $(NETWORK)/parsytec $(NETWORK)/meiko
@@ -430,10 +429,12 @@ ifeq ($(HLICENSEE), PERIHELION_C40)		# C40 system components
 # X_LIC = TRUE
 
 # What hosts we support the Helios build on:
- HOSTSUPPORT := SUN4 R140 HELIOSC40 HP
+# HOSTSUPPORT := SUN4 R140 HELIOSC40 HP
+ HOSTSUPPORT := SUN4 HELIOSC40 
 
 # What hosts we support the IOServer on other than the PC:
- HOSTIOSUPPORT := SUN4 R140 SUN3
+# HOSTIOSUPPORT := SUN4 R140 SUN3
+ HOSTIOSUPPORT := SUN4 
 
 # ALL licensee specific code that we support:
 XTRASRC := 	
@@ -446,17 +447,19 @@ ifeq ($(HLICENSEE), PERIHELION_ARM)		# Helios-ARM system components
  SRC_LIC = TRUE
  NCC_LIC = TRUE
 # HFS_LIC = TRUE
- MSDOS_LIC = TRUE
+#ejb MSDOS_LIC = TRUE
 # DEBUG_LIC = TRUE
 # TCPIP_LIC = TRUE
  IOS_LIC = TRUE
 # X_LIC = TRUE
 
 # What hosts we support the Helios build on:
- HOSTSUPPORT := SUN4 R140 HP
+# HOSTSUPPORT := SUN4 R140 HP
+ HOSTSUPPORT := SUN4
 
 # What hosts we support the IOServer on other than the PC:
- HOSTIOSUPPORT := SUN4 R140 SUN3
+# HOSTIOSUPPORT := SUN4 R140 SUN3
+ HOSTIOSUPPORT := SUN4 
 
 # ALL licensee specific code that we support:
 # XTRASRC := 	
@@ -466,7 +469,7 @@ endif
 ifeq ($(HLICENSEE), TELMAT)
  SRC_LIC = TRUE
  HFS_LIC = TRUE
- MSDOS_LIC = TRUE
+ #ejb MSDOS_LIC = TRUE
  DEBUG_LIC = TRUE
  TCPIP_LIC = TRUE
  IOS_LIC = TRUE
@@ -709,43 +712,43 @@ ifeq ($(HHOST),SUN4)
 	-ln -s $(HPROD)/tmp $(HPROD)/tmp0
 	-ln -s $(HPROD)/tmp $(HPROD)/tmp1
 endif
-	@ test -d  $(HPROD)/lib ||	mkdir $(HPROD)/lib
-	@ test -d  $(HPROD)/bin ||	mkdir $(HPROD)/bin
-	@ test -d  $(HPROD)/bin/private ||	mkdir $(HPROD)/bin/private
-	@ test -d  $(HPROD)/system ||	mkdir $(HPROD)/system
-	@ test -d  $(HPROD)/users ||	mkdir $(HPROD)/users
-	@ test -d  $(HPROD)/users/root ||	mkdir $(HPROD)/users/root
-	@ test -d  $(HPROD)/users/shutdown ||	mkdir $(HPROD)/users/shutdown
-	@ test -d  $(HPROD)/users/guest ||	mkdir $(HPROD)/users/guest
-	@ test -d  $(HPROD)/users/guest/examples ||	mkdir $(HPROD)/users/guest/examples
-	@ test -d  $(HPROD)/users/guest/examples/servers ||	mkdir $(HPROD)/users/guest/examples/servers
+	@ test -d  $(HPROD)/lib || mkdir $(HPROD)/lib
+	@ test -d  $(HPROD)/bin || mkdir $(HPROD)/bin
+	@ test -d  $(HPROD)/bin/private || mkdir $(HPROD)/bin/private
+	@ test -d  $(HPROD)/system || mkdir $(HPROD)/system
+	@ test -d  $(HPROD)/users || mkdir $(HPROD)/users
+	@ test -d  $(HPROD)/users/root || mkdir $(HPROD)/users/root
+	@ test -d  $(HPROD)/users/shutdown || mkdir $(HPROD)/users/shutdown
+	@ test -d  $(HPROD)/users/guest || mkdir $(HPROD)/users/guest
+	@ test -d  $(HPROD)/users/guest/examples || mkdir $(HPROD)/users/guest/examples
+	@ test -d  $(HPROD)/users/guest/examples/servers || mkdir $(HPROD)/users/guest/examples/servers
 	@ test -d  $(HPROD)/local || mkdir $(HPROD)/local
-	@ test -d  $(HPROD)/local/lib ||	mkdir $(HPROD)/local/lib
-	@ test -d  $(HPROD)/local/lib/tex ||	mkdir $(HPROD)/local/lib/tex
-	@ test -d  $(HPROD)/local/bin ||	mkdir $(HPROD)/local/bin
-	@ test -d  $(HPROD)/local/bin/X11 ||	mkdir $(HPROD)/local/bin/X11
-	@ test -d  $(HPROD)/local/games ||	mkdir $(HPROD)/local/games
-	@ test -d  $(HPROD)/local/src ||	mkdir $(HPROD)/local/src
-	@ test -d  $(HPROD)/local/src/hfs ||	mkdir $(HPROD)/local/src/hfs
-	@ test -d  $(HPROD)/local/src/hfs/b422 ||	mkdir $(HPROD)/local/src/hfs/b422
-	@ test -d  $(HPROD)/local/src/hfs/he1000 ||	mkdir $(HPROD)/local/src/hfs/he1000
-	@ test -d  $(HPROD)/local/src/hfs/m212 ||	mkdir $(HPROD)/local/src/hfs/m212
-	@ test -d  $(HPROD)/local/src/hfs/msc ||	mkdir $(HPROD)/local/src/hfs/msc
-	@ test -d  $(HPROD)/local/src/hfs/raw ||	mkdir $(HPROD)/local/src/hfs/raw
-	@ test -d  $(HPROD)/local/tcpip ||	mkdir $(HPROD)/local/tcpip
-	@ test -d  $(HPROD)/local/tcpip/example ||	mkdir $(HPROD)/local/tcpip/example
-	@ test -d  $(HPROD)/local/tcpip/pc-ether ||	mkdir $(HPROD)/local/tcpip/pc-ether
+	@ test -d  $(HPROD)/local/lib || mkdir $(HPROD)/local/lib
+	@ test -d  $(HPROD)/local/lib/tex || mkdir $(HPROD)/local/lib/tex
+	@ test -d  $(HPROD)/local/bin || mkdir $(HPROD)/local/bin
+	@ test -d  $(HPROD)/local/bin/X11 || mkdir $(HPROD)/local/bin/X11
+	@ test -d  $(HPROD)/local/games || mkdir $(HPROD)/local/games
+	@ test -d  $(HPROD)/local/src || mkdir $(HPROD)/local/src
+	@ test -d  $(HPROD)/local/src/hfs || mkdir $(HPROD)/local/src/hfs
+	@ test -d  $(HPROD)/local/src/hfs/b422 || mkdir $(HPROD)/local/src/hfs/b422
+	@ test -d  $(HPROD)/local/src/hfs/he1000 || mkdir $(HPROD)/local/src/hfs/he1000
+	@ test -d  $(HPROD)/local/src/hfs/m212 || mkdir $(HPROD)/local/src/hfs/m212
+	@ test -d  $(HPROD)/local/src/hfs/msc || mkdir $(HPROD)/local/src/hfs/msc
+	@ test -d  $(HPROD)/local/src/hfs/raw || mkdir $(HPROD)/local/src/hfs/raw
+	@ test -d  $(HPROD)/local/tcpip || mkdir $(HPROD)/local/tcpip
+	@ test -d  $(HPROD)/local/tcpip/example || mkdir $(HPROD)/local/tcpip/example
+	@ test -d  $(HPROD)/local/tcpip/pc-ether || mkdir $(HPROD)/local/tcpip/pc-ether
 ifeq ($(HHOST),HELIOSTRAN)
-     	@ test -d  $(HPROD)/include ||	mkdir $(HPROD)/include
+     	@ test -d  $(HPROD)/include || mkdir $(HPROD)/include
 	-cp -r $(HSRC)/include/* $(HPROD)/include
 else
 ifeq ($(HHOST),HELIOSC40)
-	test -d  $(HPROD)/include ||	mkdir $(HPROD)/include
+	test -d  $(HPROD)/include || mkdir $(HPROD)/include
 	-cp -r $(HSRC)/include/* $(HPROD)/include
 else
-	@ test -L $(HPROD)/include || ln -s $(HSRC)/include $(HPROD)
-	@ test -L $(HPROD)/bin/X11 || ln -s $(XBIN)/bin/X11 $(HPROD)/bin
-	@ test -L $(HPROD)/lib/X11 || ln -s $(XBIN)/lib/X11 $(HPROD)/lib
+	@ test -d $(HPROD)/include || ln -s $(HSRC)/include $(HPROD)
+	@ test -d $(HPROD)/bin/X11 || ln -s $(XBIN)/bin/X11 $(HPROD)/bin
+	@ test -d $(HPROD)/lib/X11 || ln -s $(XBIN)/lib/X11 $(HPROD)/lib
 endif
 endif
 	-cp $(HSRC)/ioproc/server/ibm/server_exe/server.exe $(HPROD)
